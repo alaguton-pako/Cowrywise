@@ -44,6 +44,6 @@ const props = defineProps({
   text-transform: capitalize;
 }
 .fill-gray-400 {
-  fill: #9ca3af; /* Tailwind gray-400 */
+  fill: #9ca3af; 
 }
 </style>
