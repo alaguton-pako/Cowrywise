@@ -1,6 +1,6 @@
 <template>
   <div class="p-2 grid col-span-12 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-0">
-    <div v-for="index in 6" :key="index">
+    <div v-for="index in 8" :key="index">
       <div
         class="rounded-lg bg-gray-400 shadow-md overflow-hidden mb-0 relative animate-pulse"
         :class="{

@@ -18,7 +18,6 @@ const selectedImage = ref({})
 const openModal = (image) => {
   selectedImage.value = image
   modalVisible.value = true
-  console.log(selectedImage.value)
 }
 
 const searchPhotos = async (query = '') => {
