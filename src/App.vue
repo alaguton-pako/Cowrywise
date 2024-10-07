@@ -3,6 +3,7 @@ import CardLoader from '@/components/CardLoader.vue'
 import { ref, onMounted, watch } from 'vue'
 import Request from '@/services/Request'
 import QuoteComponent from '@/components/QuoteComponent.vue'
+import ImageModal from '@/components/ImageModal.vue'
 
 const loading = ref(false)
 const payLoad = ref([])
@@ -10,6 +11,15 @@ const error = ref(null)
 const searchQuery = ref('')
 const searchSuccessful = ref(false)
 let timeoutId = null
+
+const modalVisible = ref(false)
+const selectedImage = ref({})
+
+const openModal = (image) => {
+  selectedImage.value = image
+  modalVisible.value = true
+  console.log(selectedImage.value)
+}
 
 const searchPhotos = async (query = '') => {
   try {
@@ -93,15 +103,13 @@ watch(searchQuery, (newQuery) => {
           />
         </div>
         <form @submit.prevent="submitSearch" v-if="!searchSuccessful && !loading">
-          <label
-            for="default-search"
-            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+          <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only"
             >Search</label
           >
           <div class="relative">
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
-                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                class="w-4 h-4 text-gray-500"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -141,12 +149,13 @@ watch(searchQuery, (newQuery) => {
           <div class="p-2 grid col-span-12 md:grid-cols-3 gap-6 mb-0">
             <div v-for="(image, index) in payLoad" :key="index">
               <div
-                class="rounded-lg overflow-hidden mb-0 relative"
+                class="rounded-lg overflow-hidden mb-0 relative cursor-pointer"
                 :class="{
                   'h-72': index % 3 === 0,
                   'h-96': index % 3 === 1,
                   'h-80': index % 3 === 2
                 }"
+                @click="openModal(image)"
               >
                 <img
                   :src="image.urls.regular"
@@ -168,6 +177,12 @@ watch(searchQuery, (newQuery) => {
         </div>
       </div>
     </div>
+    <ImageModal
+      v-if="modalVisible"
+      :imageDetails="selectedImage"
+      :showModal="modalVisible"
+      @close="modalVisible = false"
+    />
   </main>
 </template>
 
