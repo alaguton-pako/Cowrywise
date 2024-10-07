@@ -3,10 +3,10 @@
     v-if="showModal"
     class="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50"
   >
-    <div class="relative w-full h-[90vh] bg-white rounded-lg shadow md:w-[50%]">
+    <div class="relative w-full h-[90vh] bg-white rounded-lg shadow lg:w-[50%]">
       <button
         type="button"
-        class="absolute top-0 right-[-5rem] transform translate-x-3 -translate-y-3 text-white hover:bg-gray-200 hover:text-gray-900 text-sm w-8 h-8 inline-flex justify-center items-center shadow-lg"
+        class="absolute top-0 right-3 transform translate-x-3 -translate-y-3 text-white lg:right-[-5rem] hover:bg-gray-200 hover:text-gray-900 text-sm w-8 h-8 inline-flex justify-center items-center shadow-lg"
         @click="closeModal"
       >
         <svg

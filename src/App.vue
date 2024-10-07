@@ -146,7 +146,7 @@ watch(searchQuery, (newQuery) => {
           {{ error }}
         </div>
         <div v-else>
-          <div class="p-2 grid col-span-12 md:grid-cols-3 gap-6 mb-0">
+          <div class="p-2 grid col-span-12 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-0">
             <div v-for="(image, index) in payLoad" :key="index">
               <div
                 class="rounded-lg overflow-hidden mb-0 relative cursor-pointer"
